@@ -1,7 +1,7 @@
 .container{
     display: grid;
-    grid-template-columns: repeat(16, 30px);
-    grid-template-rows: repeat(16, 40px);
+    grid-template-columns: repeat(16, 82px);
+    grid-template-rows: repeat(16, 42px);
     grid-gap: 6px;
     /* align-items: center; */
 
@@ -15,12 +15,3 @@
     justify-content: center;
 
 }
-
-/* .contentClass {
-    display: grid;
-
-} */
-/* .wrap {
-    display: flex;
-    flex-wrap: wrap
-} */
