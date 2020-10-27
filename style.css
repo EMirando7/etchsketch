@@ -1,17 +1,19 @@
 .container{
     display: grid;
     grid-template-columns: repeat(16, 82px);
-    grid-template-rows: repeat(16, 42px);
+    grid-template-rows: repeat(16, 39px);
     grid-gap: 6px;
-    /* align-items: center; */
-
 }
 .subs {
     border: solid;
     height: 100%;
     width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
+    top: 60px;
+    transition: background-color .2s ease-in;
 
+}
+.subs:hover {
+    background-color: yellow;
 }
