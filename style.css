@@ -1,19 +1,30 @@
+html {
+    background-color:#f5cdc1;
+}
+button {
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+}
 .container{
-    display: grid;
-    grid-template-columns: repeat(16, 82px);
-    grid-template-rows: repeat(16, 39px);
-    grid-gap: 6px;
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    margin: 200px 0 0 550px;
 }
 .subs {
-    border: solid;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    position: relative;
-    top: 60px;
-    transition: background-color .2s ease-in;
-
+    border: solid black;
+    height: 20px;
+    width: 20px;
 }
-.subs:hover {
-    background-color: yellow;
+
+.cellColor {
+    background-color: black;
+}
+
+.wrap {
+    width: 100%;
+    height: 0;
+    /* page-break-after: always; */
+    /* display: none; */
 }
