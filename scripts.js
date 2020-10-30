@@ -5,6 +5,8 @@ btn.addEventListener('click', function getNumber() {
     runGame(answer);
 })
 document.body.insertBefore(btn, container);
+
+
 function runGame(foo) {
     // debugger;
     for(let j = 0; j < foo; j++){ 
@@ -21,8 +23,7 @@ function runGame(foo) {
         container.appendChild(wrapCell)
         container.lastChild.classList.add('wrap');
         container.lastChild.classList.remove('subs')
-        console.log(wrapCell)
-    
     }    
 }
-runGame(2)
+
+runGame(11)
