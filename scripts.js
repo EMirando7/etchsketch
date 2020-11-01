@@ -1,29 +1,62 @@
+//~~~~~~~~~~~~~~~~~~~~~~~CONSTANTS~~~~~~~~~~~~~~~~~
 const container = document.querySelector('.container');
-const btn = document.createElement('button');
-btn.addEventListener('click', function getNumber() {
-    let answer = prompt('Hey guy/gal, how many squares per side?');
-    runGame(answer);
-})
-document.body.insertBefore(btn, container);
+const body = document.querySelector('body');
 
-
-function runGame(foo) {
-    // debugger;
-    for(let j = 0; j < foo; j++){ 
-        for( let i = 0;  i < foo; i ++){
-            const subContainers = document.createElement('div');
-            subContainers.classList.add('subs');
-            container.appendChild(subContainers);
-            subContainers.addEventListener('mouseenter', () => {
-            subContainers.classList.add('cellColor')
-            })
-        }
-        let wrapCell = document.createElement('div');
-        wrapCell.classList.add('wrap');
-        container.appendChild(wrapCell)
-        container.lastChild.classList.add('wrap');
-        container.lastChild.classList.remove('subs')
-    }    
+// ~~~~~~~~~~~~~~~~~~~~~~ADD BUTTONS ~~~~~~~~~~~
+function addButtons() {
+    for(let i = 0; i < 3; i++) {
+        const btn = document.createElement('button');
+        document.body.insertBefore(btn, container)
+    }
+    body.children[0].textContent = "Change Size";
+    body.children[0].addEventListener('click', () => startGame());
+    body.children[1].textContent = "Clear Colors";
+    body.children[1].addEventListener('click', () => wipeGrid());
+    body.children[2].textContent = "Colorized";
+    body.children[2].addEventListener('click', () => randomColor());
 }
 
-runGame(11)
+// ~~~~~~~~~~~~~~ Help Func ~~~~~~~~~~~~~~~
+// Ask for input
+function startGame() {
+    wipeGrid();
+    container.innerHTML = '';
+    let userInput = prompt("How many squares each side? Only number from 1-100");
+    createGrid(userInput);
+}
+
+// Create the columns & add squares
+function createGrid(num){
+    container.style.gridTemplateColumns = `repeat(${num}, 1fr)`
+    for(let j = 0 ; j < num; j++){
+        for(let i = 0; i < num; i ++){
+            let div = document.createElement('div');
+            div.classList.add('sqs');
+            div.style.border = 'solid 0.2px';
+            div.style.backgroundColor = '#f5cdc1';
+            div.addEventListener('mouseenter', () => div.style.backgroundColor = 'black')
+            container.appendChild(div);
+        }
+    }
+}
+
+// clear color from squares
+function wipeGrid() {
+    for(div of document.querySelectorAll('.sqs')){
+        div.style.backgroundColor =  '#f5cdc1';
+    }
+}
+// change color
+function randomColor() {
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    const squares = document.querySelectorAll('.sqs');
+    for(let i = 0; i < squares.length; i ++){
+
+        if(squares[i].style.backgroundColor == 'black') {
+            squares[i].style.backgroundColor = `#${randomColor}`
+        }
+    }
+}
+
+createGrid(16)
+addButtons();
